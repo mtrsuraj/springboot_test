@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class TopicController {
 	@Autowired
 	private TopicService topicService;
 	
-	@RequestMapping("/topic")
+	@GetMapping("/topic")
 	public List<Topic> getAllTopic() {
 		return topicService.getAllTopics();
 	}
@@ -42,7 +43,7 @@ public class TopicController {
 		
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE, value = "/topic/{id}")
+	@DeleteMapping("/topic/{id}")
 	public void deleteTopic(@PathVariable String id) {
 		topicService.deleteTopic(id);
 		
